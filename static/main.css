@@ -1,0 +1,38 @@
+body {
+  background-color:#2f2f2f;
+}
+button{
+    height: 1.6rem;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left:4rem;
+}
+.ticker-container{
+    position: absolute;
+    width: 100vw;
+}
+.ticker{
+    background-color: #3f3f3f;
+    width:80%;
+    padding-left: 1vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 2vh;
+    height: max-content;
+    position: relative;
+}
+.div-track-coin{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #6f6f7a;
+    width: min-content;
+    max-height: min-content;
+    position: fixed;
+    z-index: 10;
+}
+.div-track-coin-invisible{
+    display: none;
+}

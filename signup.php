@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>My first PHP Website</title>
+        <link rel="stylesheet" href="static/main.css">
     </head>
     <body>
         <h2>Create user</h2>

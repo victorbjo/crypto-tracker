@@ -1,12 +1,21 @@
 <html>
 <head>
 <title>Log in</title>
+<link rel="stylesheet" href="static/main.css">
 </head>
 <body>
 <form action="login.php" method="post">
             Username: <input type="text" name="username" required="required" /> <br/>
             Password: <input type="password" name="password" required="required" /> <br/>
            <input type="submit" value="Log in!"/>
+</form>
+           <div>
+<form action="index.php" method="post">
+    <input type="text" name="quantity" placeholder="Quantity, Eg. 0.62"/>
+    <input type="hidden" name="coin" value="bitcoin"/>
+    <input type="submit" value="Add to portfolio"/>
+</form>
+</div>
 </body>
 
 </html>
@@ -25,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         while($row = $result->fetch_assoc()) {
           if (password_verify($password, $row["password"])){
             $_SESSION['user'] = $username;
-            header("Location: http://localhost/cryptoTracker/index.php");
+            header("Location: http://localhost/crypto-Tracker/index.php");
             exit(); 
           }
           else{
