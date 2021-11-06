@@ -15,12 +15,20 @@ function createCurrencyTicker(currency){
     let mainDiv = document.createElement("div");
     mainDiv.classList.add("ticker");
     const para = document.createElement("p");
-    const node = document.createTextNode(currency.name + " Price USD: " + Math.round(currency.priceUsd,2));
+    var price = currency.priceUsd;
+    if (price>10){
+        price = Math.round(currency.priceUsd * 100)/100;
+    }
+    else if (price>1){
+        price = Math.round(currency.priceUsd * 1000)/1000;
+    }
+    const node = document.createTextNode(currency.name + " Price USD: " + price);
     para.appendChild(node);
     let buy = document.createElement("button");
     buy.innerHTML = "Add to tracker";
+    buy.id = "button_add_to_tracker"
     buy.addEventListener("click", changeCoin);
-    buy.coin = currency.id;
+    buy.coin = currency.name;
     const element = document.getElementById("tickers");
     mainDiv.appendChild(para);
     mainDiv.appendChild(buy);
@@ -35,6 +43,7 @@ function changeCoin(evt){
     document.getElementById("div-track-coin").classList.remove("div-track-coin-invisible");
     coinParagraph.innerText = coin;
     coinHidden.value=coin;
+    window.addEventListener("click", checkClick);
 }
 
 
@@ -51,4 +60,11 @@ function getCurrency(id, all = false){
         }
     }
 }
+}
+
+function checkClick(evt){
+    var container = document.getElementById("div-track-coin");
+    if (evt.target.id != "div-track-coin" && evt.target.id != "button_add_to_tracker" && !container.contains(evt.target)){
+        document.getElementById("div-track-coin").classList.add("div-track-coin-invisible");
+    }
 }

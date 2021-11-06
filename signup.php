@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="static/main.css">
     </head>
     <body>
+    <?php include("header.php"); ?>
         <h2>Create user</h2>
         <form action="index.php" method="post">
             Email: <input type="text" name="email" required="required" /> <br/>
@@ -16,7 +17,6 @@
 
 
 <?php
-session_start();
 if (isset($_POST['sign_out'])){
     $_SESSION['user'] = null;
 }else{
