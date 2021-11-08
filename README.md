@@ -4,6 +4,7 @@ To do:
 * Make it prettier!!!
 * Being able to change currencies
 * Being able to edit crypto entries for specific currency. Current detailed view shows all.
+* Clean up the code base. Lot of old test files, and unused junk..
 
 
 Features:
