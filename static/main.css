@@ -7,6 +7,9 @@ button{
     margin-bottom:auto;
     margin-left:4rem;
 }
+p{
+    margin:0;
+}
 .ticker-container{
     position: absolute;
     width: 100vw;
@@ -58,11 +61,14 @@ button{
 .crypto-portfolio{
     display: flexbox;
     background-color: #5f5f5f;
-    width: 40rem;
-    padding: 1rem;
-    margin-bottom: .5rem;
+    width: 60vw;
+    padding: 1vw;
     border-radius: .5rem;
-    position: relative;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .crypto-portfolio:nth-child(odd){
     background-color: #3f3f3f;
@@ -70,23 +76,41 @@ button{
 .crypto-portfolio-parent{
     background-color: #666;
     height: min-content;
-    min-height: 2.5rem;
-    margin-bottom: .5rem;
-    width: min-content;
+    min-height: 4rem;
+    margin-bottom: 1rem;
+    width: 62vw;
     border-radius: .5rem;
     transition: min-height .7s;
+    position: relative;
+    
 }
 .crypto-portfolio-hidden{
-    position: relative;
     z-index: 0;
-    background-color: #666;
-    height: min-content;
-    min-height: 2.5rem;
-    margin-bottom: .5rem;
-    width: min-content;
-    border-radius: .5rem;
-    transition: min-height .7s;
+    width: 100%;
+    padding-left: 1vw;
+    padding-bottom: .1vw;
+    position: relative;
+    transition: padding-top .7s;
+    display: flex;
+    flex-direction: row;
+}
+.crypto-portfolio-hidden-not{
+    padding-top: 4rem;
 }
 .high{
     min-height: 8rem;
+}
+.input-edit{
+    height: 1rem;
+    margin-top:1.4rem;
+    margin-right: 1.5rem;
+    margin-left: .5rem;
+    width: 4rem;
+}
+.text-edit{
+    margin-top:1.3rem;
+}
+.save-edit{
+    margin-top:1rem;
+    height: 2rem;
 }

@@ -24,24 +24,31 @@
                 while($row = $result->fetch_assoc()) {
                     ?>
                     <div class='crypto-portfolio-parent'>
-                        <div class="crypto-portfolio-hidden"><p>Price</p><div>
                         <?php
                     $id = $row['id'];
                     $crypto = $row["crypto"];
-                    echo "<div class='crypto-portfolio' id='".$crypto."'/>";
+                    echo "<div class='crypto-portfolio' id='".$crypto."'>";
                     echo $crypto;
-                    echo " Purchase price: ".$row["price"];
-                    echo " Purchase date: ".$row["purchase_date"];
-                    echo " Amount bought:".$row["amount"];
-                    echo "<button onclick=".'"'."show_edit('".$crypto."')".'"'.">FUCK</button> ";
-                    echo "</div>";
-                    echo "</div>";
-                    
+                    echo " Purchase price: <p id='".$crypto."-priceOrig'>".$row["price"]."</p>";
+                    echo "&nbsp&nbsp&nbspAmount bought:<p id='".$crypto."-amountOrig'>".$row["amount"]."</p>";
+                    echo "<button onclick=".'"'."show_edit('".$crypto."')".'"'.">Edit purchase</button> ";
+                    ?>
+                    </div>
+                    <div class='crypto-portfolio-hidden' id='<?php echo $crypto; ?>-hidden'> 
+                        <input type="hidden" value="<?php echo $row['id']; ?>" id="<?php echo $crypto; ?>-id">
+                        <p class="text-edit">Purchase price</p> 
+                        <input type="text" class="input-edit" id="<?php echo $crypto; ?>-price" value="<?php echo $row['price']; ?>">
+                        <p class="text-edit">Amount bought </p> 
+                        <input type="text" class="input-edit" id="<?php echo $crypto; ?>-amount" value="<?php echo $row['amount']; ?>">
+                        <button class="save-edit" onclick="updateEntry('<?php echo $crypto; ?>')">Save new details</button>
+                        <button class="save-edit" onclick="updateEntry('<?php echo $crypto; ?>', true)">Delete</button>
+                    </div>
+                    </div>
+                    <?php
                 }
                 
             }
             ?>
-            <button onclick="show_edit('asd')">FUCK</button>
     </body>
 </html>
 
