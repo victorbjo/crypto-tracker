@@ -22,6 +22,7 @@ p{
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 2vh;
+    min-height: 3rem;
     height: max-content;
     position: relative;
 }
@@ -54,9 +55,6 @@ p{
     border-radius: 1vh;
 }
 .main-explorer{
-    width: 60vw;
-    background: #000;
-    height: fit-content;
 }
 .crypto-portfolio{
     display: flexbox;

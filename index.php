@@ -24,11 +24,36 @@
             else{
                 echo'<a href="/crypto-Tracker/login.php"> Log in </a></br>';
                 echo'<a href="/crypto-Tracker/signup.php"> Create user </a></br>';
+                exit();
+            }
+            $currenciesAnalyzed = [];
+            $combinedPurchasePrice = [];
+            $combinedAmount = [];
+            $user = $_SESSION["id"];
+            $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
+            $sql = "SELECT crypto, price, purchase_date, amount, id FROM crypto WHERE user_id = '$user'";
+            $result = $conn->query($sql);
+            if ($result){
+                while($row = $result->fetch_assoc()) {
+                    if (!in_array($row["crypto"], $currenciesAnalyzed)){
+                        array_push($currenciesAnalyzed, $row["crypto"]);
+                        array_push($combinedPurchasePrice, floatval($row["price"]*$row["amount"]));
+                        array_push($combinedAmount, floatval($row["amount"]));
+                    }
+                    else{
+                        $combinedAmount[array_search($row["crypto"], $currenciesAnalyzed)] += floatval($row["amount"]);
+                        $combinedPurchasePrice[array_search($row["crypto"], $currenciesAnalyzed)] += $row["price"]*$row["amount"];
+                        //echo array_search($row["crypto"], $currenciesAnalyzed);
+                    }
+                }
+            }
+            for ($i = 0; $i < count($combinedPurchasePrice); $i++){
+                $avgPrice = $combinedPurchasePrice[$i]/$combinedAmount[$i];
+                $totalValue = $avgPrice * $combinedAmount[$i];
+                echo $currenciesAnalyzed[$i] . ". Avg purchase price: " . $avgPrice . "USD. Amount owned: " . $combinedAmount[$i] . ". Total value: ".$totalValue. "USD</br></br>";
+                
             }
             ?>
-        <!--<embed id="embed" src="http://localhost/crypto-Tracker/addToTracker.php?coin=ethereum" 
-               style="border:1px solid #111111;"/>!-->
-
 
     </body>
 </html>

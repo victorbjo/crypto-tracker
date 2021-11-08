@@ -38,6 +38,7 @@
     <ul>
       <li><a class="active, header-link" href="index.php">Home</a></li>
       <li><a href="explorer.php" class="header-link">Explore</a></li>
+      <li><a href="myportfolio.php" class="header-link">My portfolio details</a></li>
       <li>Logged in as <?php echo $_SESSION['user'] ?></li>
       <li><a href="logout.php" class="header-link">Log out</a></li>
       <?php
