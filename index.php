@@ -64,7 +64,8 @@
                                     <td id="<?php echo $currenciesAnalyzed[$i];?>" class="currentPrice"><?php echo $totalValue;?> $USD</td>
                                     <td id="currentHoldings<?php echo $currenciesAnalyzed[$i];?>" class="currentHoldings"><?php echo $currenciesAnalyzed[$i];?></td>
                                     <td id="<?php echo $combinedAmount[$i];?>" class="currentAmount"><?php echo $combinedAmount[$i]. " ".$currenciesAnalyzed[$i];?></td>
-                                    <td id="avgPrice<?php echo $currenciesAnalyzed[$i];?>"class="avgPrice"><?php echo $avgPrice;?> $USD</td>
+                                    <td id="avgPrice<?php echo $currenciesAnalyzed[$i];?>"class="avgPrice"><?php echo $avgPrice;?> 
+                                        $USD <a href="myportfolio.php?coin=<?php echo$currenciesAnalyzed[$i]?>"> <img src="static/info.png" style="height:1.2rem;"></a> </td>
                                     <td id="profit<?php echo $currenciesAnalyzed[$i];?>"class="profit"><?php echo $avgPrice;?></td>
 
                   </tr><?php

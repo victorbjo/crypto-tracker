@@ -15,7 +15,7 @@ include("header.php");
 ?>
     <body style="overflow:hidden;">
     <script src="scripts/explorer.js"></script>
-    <div class="table-container">
+    <div class="">
         <?php
             if (isset($_POST['sign_out'])){
                 $_SESSION['user'] = null;
@@ -27,6 +27,7 @@ include("header.php");
             $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
             if (isset($_GET["coin"])){
                 $coin = $_GET["coin"];
+                echo "<h1 class='h1-margin' > Your ".$_GET["coin"]." entries in detail</h1>";
                 $sql = "SELECT crypto, price, purchase_date, amount, id FROM crypto WHERE user_id = '$user' AND crypto = '$coin'";
                 }
                 else{
@@ -36,6 +37,7 @@ include("header.php");
             if ($result){
                 while($row = $result->fetch_assoc()) {
                     ?>
+                    
                     <div class='crypto-portfolio-parent'>
                         <?php
                     $id = $row['id'];

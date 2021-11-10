@@ -140,3 +140,6 @@ tr:nth-child(even){
     margin-top:1rem;
     height: 2rem;
 }
+.h1-margin{
+    margin-left: 1rem;
+}
