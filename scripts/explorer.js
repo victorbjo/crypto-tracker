@@ -31,16 +31,17 @@ function show_edit(id){
     hiddenDiv.classList.toggle("crypto-portfolio-hidden-not");
 }
 function updateEntry(crypto, deleteEntry = false){
-    var entryId = document.getElementById(crypto +"-id");
     var entryPrice = document.getElementById(crypto +"-price");
     var entryAmount = document.getElementById(crypto +"-amount");
     var origPrice = document.getElementById(crypto +"-priceOrig");
+    var origAmount = document.getElementById(crypto +"-amountOrig");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.status == "200"){
             var prices = (this.responseText);
             if (prices == "success"){
                 origPrice.innerText = entryPrice.value;
+                origAmount.innerText = entryAmount.value;
             }
         }
     };
@@ -48,9 +49,9 @@ function updateEntry(crypto, deleteEntry = false){
     xhttp.open("POST", "http://localhost/crypto-Tracker/editEntry.php", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     if (deleteEntry == true){
-        xhttp.send("quantity="+String(entryAmount.value)+"&id="+String(entryId.value)+"&price="+String(entryPrice.value)+"&delete=true");  
+        xhttp.send("quantity="+String(entryAmount.value)+"&id="+String(crypto)+"&price="+String(entryPrice.value)+"&delete=true");  
     }
     else{
-        xhttp.send("quantity="+String(entryAmount.value)+"&id="+String(entryId.value)+"&price="+String(entryPrice.value));
+        xhttp.send("quantity="+String(entryAmount.value)+"&id="+String(crypto)+"&price="+String(entryPrice.value));
     }
 }

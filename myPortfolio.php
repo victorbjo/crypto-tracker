@@ -6,9 +6,16 @@
 
         </script>
     </head>
-<?php include("header.php"); ?>
-    <body>
+<?php 
+if (!isset($_GET["focus"])){
+include("header.php"); 
+}else{
+    session_start();
+}
+?>
+    <body style="overflow:hidden;">
     <script src="scripts/explorer.js"></script>
+    <div class="table-container">
         <?php
             if (isset($_POST['sign_out'])){
                 $_SESSION['user'] = null;
@@ -18,7 +25,13 @@
             }
             $user = $_SESSION["id"];
             $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
+            if (isset($_GET["coin"])){
+                $coin = $_GET["coin"];
+                $sql = "SELECT crypto, price, purchase_date, amount, id FROM crypto WHERE user_id = '$user' AND crypto = '$coin'";
+                }
+                else{
             $sql = "SELECT crypto, price, purchase_date, amount, id FROM crypto WHERE user_id = '$user'";
+                }
             $result = $conn->query($sql);
             if ($result){
                 while($row = $result->fetch_assoc()) {
@@ -27,21 +40,21 @@
                         <?php
                     $id = $row['id'];
                     $crypto = $row["crypto"];
-                    echo "<div class='crypto-portfolio' id='".$crypto."'>";
+                    echo "<div class='crypto-portfolio' id='".$id."'>";
                     echo $crypto;
-                    echo " Purchase price: <p id='".$crypto."-priceOrig'>".$row["price"]."</p>";
-                    echo "&nbsp&nbsp&nbspAmount bought:<p id='".$crypto."-amountOrig'>".$row["amount"]."</p>";
-                    echo "<button onclick=".'"'."show_edit('".$crypto."')".'"'.">Edit purchase</button> ";
-                    ?>
+                    echo " Purchase price: <p id='".$id."-priceOrig'>".$row["price"]."</p>";
+                    echo "&nbsp&nbsp&nbspAmount bought:<p id='".$id."-amountOrig'>".$row["amount"]."</p>";?>
+                    <button onclick="show_edit('<?php echo $id; ?>')">Edit purchase</button>
+                    
                     </div>
-                    <div class='crypto-portfolio-hidden' id='<?php echo $crypto; ?>-hidden'> 
-                        <input type="hidden" value="<?php echo $row['id']; ?>" id="<?php echo $crypto; ?>-id">
+                    <div class='crypto-portfolio-hidden' id='<?php echo $id; ?>-hidden'> 
+                        <input type="hidden" value="<?php echo $id; ?>" id="<?php echo $id; ?>-id">
                         <p class="text-edit">Purchase price</p> 
-                        <input type="text" class="input-edit" id="<?php echo $crypto; ?>-price" value="<?php echo $row['price']; ?>">
+                        <input type="text" class="input-edit" id="<?php echo $id; ?>-price" value="<?php echo $row['price']; ?>">
                         <p class="text-edit">Amount bought </p> 
-                        <input type="text" class="input-edit" id="<?php echo $crypto; ?>-amount" value="<?php echo $row['amount']; ?>">
-                        <button class="save-edit" onclick="updateEntry('<?php echo $crypto; ?>')">Save new details</button>
-                        <button class="save-edit" onclick="updateEntry('<?php echo $crypto; ?>', true)">Delete</button>
+                        <input type="text" class="input-edit" id="<?php echo $id; ?>-amount" value="<?php echo $row['amount']; ?>">
+                        <button class="save-edit" onclick="updateEntry('<?php echo $id; ?>')">Save new details</button>
+                        <button class="save-edit" onclick="updateEntry('<?php echo $id; ?>', true)">Delete</button>
                     </div>
                     </div>
                     <?php
@@ -49,6 +62,7 @@
                 
             }
             ?>
+        </div>
     </body>
 </html>
 

@@ -103,9 +103,11 @@ tr:nth-child(even){
     min-height: 4rem;
     margin-bottom: 1rem;
     width: 62vw;
+    max-width: 100%;
     border-radius: .5rem;
     transition: min-height .7s;
     position: relative;
+    margin-left: 1rem;
     
 }
 .crypto-portfolio-hidden{

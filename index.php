@@ -8,7 +8,7 @@
         </script>
     </head>
 <?php include("header.php"); ?>
-    <body>
+    <body onload="updateTracker()">
         <?php
             if (isset($_POST['sign_out'])){
                 $_SESSION['user'] = null;
@@ -59,13 +59,14 @@
             for ($i = 0; $i < count($combinedPurchasePrice); $i++){
                 $avgPrice = $combinedPurchasePrice[$i]/$combinedAmount[$i];
                 $totalValue = $avgPrice * $combinedAmount[$i];
-                ?>
-                                    <td id="currency<?php echo $i;?>"><?php echo $currenciesAnalyzed[$i];?></td>
-                                    <td id="currentPrice<?php echo $i;?>"><?php echo $totalValue;?> $USD</td>
-                                    <td id="currentHoldings<?php echo $i;?>"><?php echo $currenciesAnalyzed[$i];?></td>
-                                    <td id="currentAmount<?php echo $i;?>"><?php echo $combinedAmount[$i]. " ".$currenciesAnalyzed[$i];?></td>
-                                    <td id="avgPrice<?php echo $i;?>"><?php echo $avgPrice;?> $USD</td>
-                                    <td id="profit<?php echo $i;?>"><?php echo $avgPrice;?></td>
+                ?>                  <tr>
+                                    <td id="currency<?php echo $currenciesAnalyzed[$i];?>"><?php echo $currenciesAnalyzed[$i];?></td>
+                                    <td id="<?php echo $currenciesAnalyzed[$i];?>" class="currentPrice"><?php echo $totalValue;?> $USD</td>
+                                    <td id="currentHoldings<?php echo $currenciesAnalyzed[$i];?>" class="currentHoldings"><?php echo $currenciesAnalyzed[$i];?></td>
+                                    <td id="<?php echo $combinedAmount[$i];?>" class="currentAmount"><?php echo $combinedAmount[$i]. " ".$currenciesAnalyzed[$i];?></td>
+                                    <td id="avgPrice<?php echo $currenciesAnalyzed[$i];?>"class="avgPrice"><?php echo $avgPrice;?> $USD</td>
+                                    <td id="profit<?php echo $currenciesAnalyzed[$i];?>"class="profit"><?php echo $avgPrice;?></td>
+
                   </tr><?php
                 
             }
