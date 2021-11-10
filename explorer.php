@@ -18,10 +18,7 @@
             }
             if (isset($_SESSION['user'])){
                 ?>
-                <body onload="getCurrencies()">
-                <form action="index.php" method="post">
-                    <input type="submit" value="Sign out!" id="sign_out" name="sign_out"/>
-                    </form>
+                <body onload="getCurrencies(), setTimeout(checkCurrencies, 500);">
                     <h2 onload="getCurrencies()">Hello <?php echo$_SESSION['user'];?></h2>
                     <input type="hidden" id="loggedin" value="true"/>
                 <?php
@@ -33,7 +30,6 @@
             }
             ?>
         <div class="main-explorer">
-            asd
         <div id="tickers" class="ticker-container">
             
         </div>
@@ -46,9 +42,7 @@
         <input type="hidden" name="coin" id="coin" value="bitcoin"/></br>
         <button class="button-add-to-portfolio" onclick="saveInput()">Add to portfolio</button>
 </div>
-<p>If no currencies appear please reload page. </br>
-    API only allows a small amount of requests :(
-</p>
+
     </body>
 </html>
 

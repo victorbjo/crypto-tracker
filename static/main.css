@@ -10,6 +10,32 @@ button{
 p{
     margin:0;
 }
+table{
+    margin: auto;
+    border-collapse: collapse;
+}
+td, th{
+    text-align: left;
+    border: 1px solid #777;
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+th{
+    font-size:25px;
+    font-weight: bold;
+}
+td{
+    font-size:20px;
+}
+tr:nth-child(even){
+    background: #555;
+}
+.table-container{
+    height: calc(100vh - 4rem);
+    min-height: fit-content;
+    padding-top: 10vh;
+}
 .ticker-container{
     position: absolute;
     width: 100vw;

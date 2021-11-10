@@ -1,4 +1,4 @@
-var currencies;
+var currencies=null;
 function getCurrencies() {
     //window.setTimeout(getCurrencies, 10000);
     var xhttp = new XMLHttpRequest();
@@ -50,7 +50,7 @@ function changeCoin(evt){
 function getCurrency(id, all = false){
     if (all){
         for (var i = 0; i < 50; i++){
-        createCurrencyTicker(currencies.data[i]);
+            createCurrencyTicker(currencies.data[i]);
     }
     }
     else{
@@ -66,5 +66,11 @@ function checkClick(evt){
     var container = document.getElementById("div-track-coin");
     if (evt.target.id != "div-track-coin" && evt.target.id != "button_add_to_tracker" && !container.contains(evt.target)){
         document.getElementById("div-track-coin").classList.add("div-track-coin-invisible");
+    }
+}
+function checkCurrencies(){
+    if(currencies==null){
+        setTimeout(checkCurrencies, 500);
+        getCurrencies();
     }
 }

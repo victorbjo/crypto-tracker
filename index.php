@@ -15,9 +15,6 @@
             }
             if (isset($_SESSION['user'])){
                 ?>
-                <form action="index.php" method="post">
-                    <input type="submit" value="Sign out!" id="sign_out" name="sign_out"/>
-                    </form>
                     <input type="hidden" id="loggedin" value="true"/>
                 <?php
             }
@@ -47,14 +44,34 @@
                     }
                 }
             }
+            ?>
+            <div class="table-container">
+            <table>
+                <tr>
+                    <th>Currency</th>
+                    <th>Current price</th>
+                    <th>Current holdings(USD)</th>
+                    <th>Current holdings(currency)</th>
+                    <th>Avg purchasing price</th>
+                    <th>Profit</th>
+        </tr>
+            <?php
             for ($i = 0; $i < count($combinedPurchasePrice); $i++){
                 $avgPrice = $combinedPurchasePrice[$i]/$combinedAmount[$i];
                 $totalValue = $avgPrice * $combinedAmount[$i];
-                echo $currenciesAnalyzed[$i] . ". Avg purchase price: " . $avgPrice . "USD. Amount owned: " . $combinedAmount[$i] . ". Total value: ".$totalValue. "USD</br></br>";
+                ?>
+                                    <td id="currency<?php echo $i;?>"><?php echo $currenciesAnalyzed[$i];?></td>
+                                    <td id="currentPrice<?php echo $i;?>"><?php echo $totalValue;?> $USD</td>
+                                    <td id="currentHoldings<?php echo $i;?>"><?php echo $currenciesAnalyzed[$i];?></td>
+                                    <td id="currentAmount<?php echo $i;?>"><?php echo $combinedAmount[$i]. " ".$currenciesAnalyzed[$i];?></td>
+                                    <td id="avgPrice<?php echo $i;?>"><?php echo $avgPrice;?> $USD</td>
+                                    <td id="profit<?php echo $i;?>"><?php echo $avgPrice;?></td>
+                  </tr><?php
                 
             }
             ?>
-
+            </table>
+        </div>
     </body>
 </html>
 
