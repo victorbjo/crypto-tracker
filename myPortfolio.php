@@ -13,7 +13,7 @@ include("header.php");
     session_start();
 }
 ?>
-    <body style="overflow:hidden;">
+    <body>
     <script src="scripts/explorer.js"></script>
     <div class="">
         <?php
@@ -31,6 +31,7 @@ include("header.php");
                 $sql = "SELECT crypto, price, purchase_date, amount, id FROM crypto WHERE user_id = '$user' AND crypto = '$coin'";
                 }
                 else{
+                    echo "<h1 class='h1-margin' > Your crypto entries in detail</h1>";
             $sql = "SELECT crypto, price, purchase_date, amount, id FROM crypto WHERE user_id = '$user'";
                 }
             $result = $conn->query($sql);

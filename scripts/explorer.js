@@ -3,20 +3,19 @@ function saveInput() {
     var quantity = document.getElementById("quantity").value;
     var price = document.getElementById("price").value;
     var proceed = true;
-    /*if (quantity != Number){
+    if (isNaN(quantity)){
         alert("Please enter a quantity in numerics");
         proceed = false;
     }
-    if (price != Number){
+    else if(isNaN(price)){
         alert("Please enter a price in numerics");
         proceed = false;
-    }*/
+    }
     if (proceed){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.status == "200"){
             var prices = (this.responseText);
-            document.getElementById("test").innerText = "The fuck";
         }
     };
     xhttp.open("POST", "http://localhost/crypto-Tracker/addToQueue.php", true);

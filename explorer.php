@@ -38,7 +38,7 @@
 <div class="div-track-coin div-track-coin-invisible" id="div-track-coin">
         Coin : <span id="coinParagraph"></span></br>
         Quantity of coin:<input type="text" name="quantity" id="quantity" placeholder="Quantity, Eg. 0.62"/></br>
-        Unit price:<input type="text" name="price" id="price" placeholder="Purchase price, Eg. 54153.84"/></br>
+        Unit price:<input type="text" name="price" id="price" placeholder="Purchase price, Eg. 5.84. Enter price in USD"/></br>
         <input type="hidden" name="coin" id="coin" value="bitcoin"/></br>
         <button class="button-add-to-portfolio" onclick="saveInput()">Add to portfolio</button>
 </div>

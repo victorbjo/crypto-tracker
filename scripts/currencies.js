@@ -30,7 +30,6 @@ function createCurrencyTicker(currency){
     mainDiv.appendChild(para);
     mainDiv.appendChild(buy);
     element.appendChild(mainDiv);
-
 }
 
 function changeCoin(evt){
