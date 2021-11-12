@@ -21,6 +21,7 @@ function saveInput() {
     xhttp.open("POST", "http://localhost/crypto-Tracker/addToQueue.php", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send("quantity="+String(quantity)+"&coin="+String(coin)+"&price="+String(price));
+    alert(coin + " Succesfully added to your portfolio");
 }
 }
 function show_edit(id){

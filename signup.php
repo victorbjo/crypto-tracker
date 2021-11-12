@@ -6,7 +6,7 @@
     <body>
     <?php include("header.php"); ?>
         <h2>Create user</h2>
-        <form action="index.php" method="post">
+        <form action="" method="post">
             Email: <input type="text" name="email" required="required" /> <br/>
             Username: <input type="text" name="username" required="required" /> <br/>
             Password: <input type="password" name="password" required="required" /> <br/>
@@ -17,17 +17,9 @@
 
 
 <?php
-if (isset($_POST['sign_out'])){
-    $_SESSION['user'] = null;
-}else{
-    echo "Did not sign out";
-}
 if (isset($_SESSION['user'])){
     echo "You are logged in as ".$_SESSION['user'];
     ?>
-    <form action="index.php" method="post">
-           <input type="submit" value="Sign out!" id="sign_out" name="sign_out"/>
-           </form>
     <?php
 }
 else{
