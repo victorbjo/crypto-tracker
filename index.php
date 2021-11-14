@@ -34,7 +34,8 @@
             $combinedPurchasePrice = [];
             $combinedAmount = [];
             $user = $_SESSION["id"];
-            $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
+            include("credentials.php");
+            $conn = mysqli_connect($sqlhost, $sqlUsername, $sqlpassword, $sqldb) or die(mysql_error());
             $sql = "SELECT crypto, price, purchase_date, amount, id FROM crypto WHERE user_id = '$user'";
             $result = $conn->query($sql);
             if ($result){

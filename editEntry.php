@@ -4,7 +4,8 @@
     $id = $_POST["id"];
     $price = $_POST["price"];
     $username = $_SESSION['user'];
-    $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
+    include("credentials.php");
+    $conn = mysqli_connect($sqlhost, $sqlUsername, $sqlpassword, $sqldb) or die(mysql_error());
     if (isset($_POST["delete"])){
         $sql = "DELETE FROM crypto WHERE id='$id'";
     }

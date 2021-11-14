@@ -16,7 +16,8 @@
             $username = $_SESSION['user'];
             
             $price = $_POST["price"];
-            $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
+            include("credentials.php");
+            $conn = mysqli_connect($sqlhost, $sqlUsername, $sqlpassword, $sqldb) or die(mysql_error());
             $sql = "SELECT id FROM users WHERE username='$username'";
             $result = $conn->query($sql);
             $id = $result->fetch_assoc()['id'];

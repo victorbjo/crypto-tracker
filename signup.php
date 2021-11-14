@@ -27,7 +27,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $username_taken = false;
-    $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
+    include("credentials.php");
+    $conn = mysqli_connect($sqlhost, $sqlUsername, $sqlpassword, $sqldb) or die(mysql_error());
+    
     $sql = "SELECT id, username, password FROM users";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {

@@ -19,7 +19,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST['password'];
     $failure_msg = "No user with that username/password";
     $username_taken = true;
-    $conn = mysqli_connect("localhost", "root","","cryptotracker") or die(mysql_error());
+    include("credentials.php");
+    $conn = mysqli_connect($sqlhost, $sqlUsername, $sqlpassword, $sqldb) or die(mysql_error());
     $sql = "SELECT password, id FROM users WHERE username = '$username'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
