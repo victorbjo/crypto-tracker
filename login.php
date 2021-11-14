@@ -29,15 +29,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           if (password_verify($password, $row["password"])){
             $_SESSION['user'] = $username;
             $_SESSION['id'] = $row["id"];
+            $conn->close();
             header("Location: http://localhost/crypto-Tracker/index.php");
             exit(); 
           }
           else{
+            $conn->close();
             echo $failure_msg;
           }
         }
       }
       else{
+        $conn->close();
           echo $failure_msg;
       }
 }

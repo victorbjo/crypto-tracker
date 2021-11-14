@@ -16,11 +16,13 @@
     VALUES ('$coin', '$price', '2021/10/31', '$quantity', '$id')";
     if ($conn->query($sql) === TRUE) {
         echo "succes";
+        $conn->close();
         exit(); 
     }
     else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    $conn->close();
     exit();
 
 

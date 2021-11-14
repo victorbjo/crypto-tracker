@@ -52,6 +52,7 @@
                     }
                 }
             }
+            $conn->close();
             ?>
             <div class="table-container">
             <table>

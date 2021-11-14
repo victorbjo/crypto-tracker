@@ -24,6 +24,7 @@
             $sql = "INSERT INTO crypto (crypto, price, purchase_date, amount, user_id)
             VALUES ('$coin', '$price', '2021/10/31', '$quantity', '$id')";
             if ($conn->query($sql) === TRUE) {
+                $conn->close();
                 header("Location: http://localhost/crypto-Tracker/index.php");
                 exit(); 
                 ?>
@@ -36,6 +37,7 @@
             else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
+            $conn->close();
             exit();
         }
         ?>

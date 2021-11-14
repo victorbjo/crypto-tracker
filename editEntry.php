@@ -14,11 +14,13 @@
     }
     if ($conn->query($sql) === TRUE) {
         echo "success";
+        $conn->close();
         exit(); 
     }
     else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    $conn->close();
     exit();
 
 
