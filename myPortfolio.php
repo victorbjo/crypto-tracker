@@ -1,3 +1,10 @@
+<?php 
+if (!isset($_GET["focus"])){
+include("header.php"); 
+}else{
+    session_start();
+}
+?>
 <html>
     <head>
         <title>Crypto portfolio</title>
@@ -6,13 +13,6 @@
 
         </script>
     </head>
-<?php 
-if (!isset($_GET["focus"])){
-include("header.php"); 
-}else{
-    session_start();
-}
-?>
     <body>
     <script src="scripts/explorer.js"></script>
     <div class="">

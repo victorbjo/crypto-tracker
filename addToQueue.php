@@ -1,11 +1,9 @@
 <?php
-
     session_start();
     $quantity = $_POST["quantity"];
     echo $quantity;
     $coin = $_POST["coin"];
     $username = $_SESSION['user'];
-    
     $price = $_POST["price"];
     include("credentials.php");
     $conn = mysqli_connect($sqlhost, $sqlUsername, $sqlpassword, $sqldb) or die(mysql_error());
@@ -24,6 +22,4 @@
     }
     $conn->close();
     exit();
-
-
 ?>

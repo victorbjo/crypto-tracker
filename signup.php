@@ -1,10 +1,11 @@
+<?php include("header.php"); ?>
 <html>
     <head>
         <title>My first PHP Website</title>
         <link rel="stylesheet" href="static/main.css">
     </head>
     <body>
-    <?php include("header.php"); ?>
+   
         <h2>Create user</h2>
         <form action="" method="post">
             Email: <input type="text" name="email" required="required" /> <br/>

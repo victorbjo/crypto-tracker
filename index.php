@@ -1,3 +1,4 @@
+<?php include("header.php"); ?>
 <html>
     <head>
         <title>Crypto portfolio</title>
@@ -7,7 +8,6 @@
 
         </script>
     </head>
-<?php include("header.php"); ?>
     <body onload="updateTracker()">
         <?php
             if (isset($_POST['sign_out'])){
@@ -24,7 +24,7 @@
                     <h1 class="h1-margin">Welcome to Crypto Tracker V0.1</h1>
                     <p class="h1-margin">Please feel free to play around with it! In advance, sorry about ugly UI. Will be fixed as soon as I get some feedback from someone who is not me :)
                     </br>
-                    A test user is made with email "test@example.com", and password "test123". Please feel free to add and or delete crypto entries to test user :)
+                    A test user is made with username "AwesomeGuest", and password "test123". Please feel free to add and or delete crypto entries to test user :)
                     </p>
                 </div>
                 <?php

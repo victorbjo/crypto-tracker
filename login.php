@@ -1,18 +1,3 @@
-<html>
-<head>
-<title>Log in</title>
-<link rel="stylesheet" href="static/main.css">
-</head>
-<body>
-<?php include("header.php"); ?>
-<form action="login.php" method="post">
-            Username: <input type="text" name="username" required="required" /> <br/>
-            Password: <input type="password" name="password" required="required" /> <br/>
-           <input type="submit" value="Log in!"/>
-</form>
-</body>
-
-</html>
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
@@ -27,14 +12,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // output data of each row
         while($row = $result->fetch_assoc()) {
           if (password_verify($password, $row["password"])){
+            session_start();
             $_SESSION['user'] = $username;
             $_SESSION['id'] = $row["id"];
             $conn->close();
-            header("Location: http://localhost/crypto-Tracker/index.php");
+            header("Location: ".$url."/index.php");
             exit(); 
           }
           else{
-            $conn->close();
             echo $failure_msg;
           }
         }
@@ -43,6 +28,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $conn->close();
           echo $failure_msg;
       }
+      include("header.php");
 }
 
 ?>
+<html>
+<head>
+<title>Log in</title>
+<link rel="stylesheet" href="static/main.css">
+</head>
+<body>
+<form action="login.php" method="post">
+            Username: <input type="text" name="username" required="required" /> <br/>
+            Password: <input type="password" name="password" required="required" /> <br/>
+           <input type="submit" value="Log in!"/>
+</form>
+</body>
+
+</html>

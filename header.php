@@ -1,3 +1,6 @@
+<?php
+    session_start();
+    ?>
 <style>
     ul {
       list-style-type: none;
@@ -32,7 +35,6 @@
     </head>
     <body>
     <?php
-    session_start();
     if (isset($_SESSION["user"])){
     ?>
     <ul>

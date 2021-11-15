@@ -1,3 +1,6 @@
+<?php
+include("header.php");
+?>
 <html>
     <head>
         <title>Crypto portfolio</title>
@@ -12,7 +15,6 @@
     </head>
 
         <?php 
-        include("header.php");
             if (isset($_POST['sign_out'])){
                 $_SESSION['user'] = null;
             }

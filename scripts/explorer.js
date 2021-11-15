@@ -18,7 +18,7 @@ function saveInput() {
             var prices = (this.responseText);
         }
     };
-    xhttp.open("POST", "http://localhost/crypto-Tracker/addToQueue.php", true);
+    xhttp.open("POST", "http://"+window.location.host+"/addToQueue.php", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send("quantity="+String(quantity)+"&coin="+String(coin)+"&price="+String(price));
     alert(coin + " Succesfully added to your portfolio");
@@ -46,7 +46,7 @@ function updateEntry(crypto, deleteEntry = false){
         }
     };
 
-    xhttp.open("POST", "http://localhost/crypto-Tracker/editEntry.php", true);
+    xhttp.open("POST", "http://"+window.location.host+"/editEntry.php", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     if (deleteEntry == true){
         xhttp.send("quantity="+String(entryAmount.value)+"&id="+String(crypto)+"&price="+String(entryPrice.value)+"&delete=true");  
